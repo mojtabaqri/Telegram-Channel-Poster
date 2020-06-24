@@ -1,4 +1,5 @@
 <?php
+require_once 'config.php';
 function bot($method, $datas = [])
 {
     $url = "https://api.telegram.org/bot" . apiKey . "/" . $method;
@@ -32,8 +33,8 @@ function analyse($text)
 }
 function SendMessage($chat_id, $text){
     bot('sendMessage',[
-        'chat_id'=>'$chat_id',
-        'text'=>'$text',
+        'chat_id'=>$chat_id,
+        'text'=>$text,
         'parse_mode'=>'MarkDown']);
 }
 function sendphoto($chat_id, $photo, $captionl){

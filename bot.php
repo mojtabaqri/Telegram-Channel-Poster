@@ -34,10 +34,10 @@ if($channel<1) exit();
         sendvoice(channels[$channel],$file_id,$caption);
         break;
     case "text":
-        sendMessage(channels[$channel],$fullMessage->text);
+        SendMessage(channels[$channel],$fullMessage->text);
         break;
     case "media_group_id":
-        sendMessage(admin,"درحال حاضر این متد موجود نیست!");
+        SendMessage(admin,"درحال حاضر این متد موجود نیست!");
         break;
     case "photo":
         $file_id=$fullMessage->photo[0]->file_id;
@@ -48,6 +48,6 @@ if($channel<1) exit();
         sendaudio(channels[$channel],$file_id,$caption);
         break;
     default:
-        sendMessage(admin,"قابل پردازش نیست ! ‼️");
+        SendMessage(admin,"قابل پردازش نیست ! ‼️");
 }
 //-------------------------------------------------------------------------------------------------------------
