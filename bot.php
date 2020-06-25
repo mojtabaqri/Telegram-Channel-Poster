@@ -23,29 +23,29 @@ if($channel<1) exit();
 {
     case "document":
         $file_id=$fullMessage->document->file_id;
-        sendDocument(channels[$channel],$file_id,$caption);
+        sendDocument(channels[$channel],$file_id,renderText($caption));
         break;
     case "video":
         $file_id=$fullMessage->video->file_id;
-        sendvideo(channels[$channel],$file_id,$caption);
+        sendvideo(channels[$channel],$file_id,renderText($caption));
         break;
     case "voice":
         $file_id=$fullMessage->voice->file_id;
-        sendvoice(channels[$channel],$file_id,$caption);
+        sendvoice(channels[$channel],$file_id,renderText($caption));
         break;
     case "text":
-        SendMessage(channels[$channel],$fullMessage->text);
+        SendMessage(channels[$channel],renderText($fullMessage->text));
         break;
     case "media_group_id":
         SendMessage(admin,"درحال حاضر این متد موجود نیست!");
         break;
     case "photo":
         $file_id=$fullMessage->photo[0]->file_id;
-        sendphoto(channels[$channel],$file_id,$caption);
+        sendphoto(channels[$channel],$file_id,renderText($caption));
         break;
     case "audio":
         $file_id=$fullMessage->audio->file_id;
-        sendaudio(channels[$channel],$file_id,$caption);
+        sendaudio(channels[$channel],$file_id,renderText($caption));
         break;
     default:
         SendMessage(admin,"قابل پردازش نیست ! ‼️");

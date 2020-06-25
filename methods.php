@@ -31,6 +31,10 @@ function analyse($text)
     $channelId=substr($text, 0, 1);
     return $channelId;
 }
+function renderText($text)
+{
+    return explode(":",$text)[1];
+}
 function SendMessage($chat_id, $text){
     bot('sendMessage',[
         'chat_id'=>$chat_id,
