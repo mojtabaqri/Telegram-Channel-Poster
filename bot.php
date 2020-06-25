@@ -4,7 +4,15 @@ require_once 'config.php';
 //end require
 $data=json_decode(file_get_contents("php://input"));
 $fullMessage=$data->message; //get fullmesage
+
+//Check User is admin
+if($fullMessage->from->id!=admin){
+    SendMessage($fullMessage->from->id,"شما مدیر نیستید! دسترسی برای شما محدود شده !");
+    exit();
+}
+//end Check
 //if message has attachment $attachment is true ---------------------
+
 $caption='';
 $file_id='';
 $mediGroupId='';
@@ -17,6 +25,8 @@ $channel=0;
 $channelId=getChannelId($fullMessage->text,$caption);
 foreach (channels as $key =>  $item ) if ($key==$channelId) $channel=$key;
 //---------------------------------------End Find Channel Id ------------------------------------
+
+
 if($channel<1) exit();
 
     switch ($messageType)
