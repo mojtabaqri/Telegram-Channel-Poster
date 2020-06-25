@@ -33,7 +33,7 @@ function analyse($text)
 }
 function renderText($text)
 {
-    return explode(":",$text)[1];
+    return substr($text, 2, strlen($text)-2);
 }
 function SendMessage($chat_id, $text){
     bot('sendMessage',[
